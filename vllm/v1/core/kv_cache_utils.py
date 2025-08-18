@@ -686,7 +686,7 @@ def check_enough_kv_cache_memory(vllm_config: VllmConfig,
     max_model_len = vllm_config.model_config.max_model_len
     needed_memory = max_memory_usage_bytes(vllm_config, kv_cache_spec.values())
 
-    if needed_memory > available_memory:
+    if needed_memory > available_memory or False:
         # Estimate the maximum model length that can fit in the available memory
         estimated_max_len = estimate_max_model_len(vllm_config, kv_cache_spec,
                                                    available_memory)
